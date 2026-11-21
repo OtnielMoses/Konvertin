@@ -1,0 +1,1 @@
+@include('tools.options.partials.ocr-first', ['hint' => 'Halaman berupa gambar diubah menjadi teks yang bisa disunting. Gambar halaman scan tersebut tidak ikut ke Word. Halaman bertek tidak berubah.'])

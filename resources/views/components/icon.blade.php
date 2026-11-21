@@ -1,0 +1,73 @@
+@props(['name', 'size' => 24])
+@php
+    /*
+     * Satu keluarga ikon Konvertin: grid 24px, garis 1,8, ujung membulat.
+     * Digambar khusus agar setiap ikon menggambarkan fungsi alatnya.
+     */
+    $file = '<path d="M6.5 3h7.5l4.5 4.5V21h-12z"/><path d="M14 3v4.5h4.5"/>';
+    $paths = [
+        'image' => '<rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="m4 18 5.5-5 4 3.5 2.5-2 4 3.5"/>',
+        'doc-word' => $file.'<path d="M9 12h6M9 15h6M9 18h4"/>',
+        'doc-slides' => '<rect x="3.5" y="4" width="17" height="12" rx="1.5"/><path d="M12 16v4M8.5 20h7M8 12l2.5-3 2 2 3-3.5"/>',
+        'doc-sheet' => '<rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 9.5h16M4 14.5h16M10 4v16"/>',
+        'globe' => '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5S14.6 18.1 12 20.5M12 3.5C9.4 5.9 8.2 8.7 8.2 12s1.2 6.1 3.8 8.5"/>',
+        'camera' => '<path d="M4 8.5h3.2L9 6h6l1.8 2.5H20v10.5H4z"/><circle cx="12" cy="13.5" r="3.3"/>',
+        'archive' => '<rect x="3.5" y="4.5" width="17" height="4.5" rx="1"/><path d="M5 9v10.5h14V9M10 12.5h4"/>',
+        'markdown' => '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M6.5 15V9l2.5 3 2.5-3v6M15.5 9v5.5M13.5 12.8l2 2.2 2-2.2"/>',
+        'merge' => '<path d="M5 4v4.5a3.5 3.5 0 0 0 3.5 3.5H12M19 4v4.5a3.5 3.5 0 0 1-3.5 3.5H12m0 0v8.5M9 17.5l3 3 3-3"/>',
+        'split' => '<path d="M12 3.5V12m0 0H8.5A3.5 3.5 0 0 0 5 15.5V20m7-8h3.5a3.5 3.5 0 0 1 3.5 3.5V20M9 6.5l3-3 3 3"/>',
+        'organize' => '<rect x="4" y="4" width="6.5" height="7.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="7.5" rx="1"/><rect x="4" y="14.5" width="6.5" height="5.5" rx="1"/><path d="M13.5 17.2h6.5M16.8 14v6.5"/>',
+        'rotate' => '<path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.5 4v4.5H15"/>',
+        'crop' => '<path d="M7 3v14h14M3 7h14v14"/>',
+        'compress' => '<path d="M4 9.5h5V4.5M20 9.5h-5V4.5M4 14.5h5v5M20 14.5h-5v5"/>',
+        'repair' => '<path d="M14.5 6.5a4 4 0 0 0 4.8 5.4l-7.8 7.8a2.1 2.1 0 0 1-3-3l7.8-7.8a4 4 0 0 0-1.8-2.4z"/><path d="m15.5 4.5 4 4"/>',
+        'ocr' => '<path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M8 9.5h8M8 12.5h8M8 15.5h5"/>',
+        'edit' => '<path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>',
+        'numbers' => '<path d="M9.5 4 8 20M16 4l-1.5 16M4.5 9h15M4 15h15"/>',
+        'watermark' => '<path d="M12 3.5s6 6.4 6 10.5a6 6 0 0 1-12 0c0-4.1 6-10.5 6-10.5z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/>',
+        'lock' => '<rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5M12 14.5v2"/>',
+        'unlock' => '<rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 7.6-1.7M12 14.5v2"/>',
+        'sign' => '<path d="M3.5 17.5c2.5-1 3.5-6.5 5.5-6.5 1.6 0 .5 4.5 2.3 4.5 1.4 0 2.2-3 3.7-3 1.2 0 1.2 2 2.4 2 .8 0 1.6-.6 3.1-1.5"/><path d="M3.5 20.5h17"/>',
+        'redact' => $file.'<path d="M9 11.5h6M9 15h6" stroke-width="3"/>',
+        'compare' => '<rect x="3.5" y="4" width="7" height="16" rx="1.5"/><rect x="13.5" y="4" width="7" height="16" rx="1.5"/><path d="M6 8.5h2M6 11.5h2M16 8.5h2M16 11.5h2M16 14.5h2"/>',
+        'form' => '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="m7 9 1.5 1.5L11 8M13.5 9.5H17M7.5 15h2M13.5 15H17"/>',
+        'summary' => $file.'<circle cx="9.5" cy="12" r=".6" fill="currentColor"/><circle cx="9.5" cy="15.5" r=".6" fill="currentColor"/><path d="M11.5 12h3.5M11.5 15.5h3.5"/>',
+        'translate' => '<path d="M4 6h8M8 4v2c0 4-1.6 7-4 8.5M5.8 9.5c1 2.2 2.7 3.8 5 4.6"/><path d="m12.5 20 3.5-8.5 3.5 8.5M13.6 17.3h4.8"/>',
+        'workflow' => '<rect x="3.5" y="4" width="6" height="5" rx="1"/><rect x="14.5" y="10" width="6" height="5" rx="1"/><rect x="3.5" y="16" width="6" height="5" rx="1"/><path d="M9.5 6.5h2.5a1.5 1.5 0 0 1 1.5 1.5v4.5h1M9.5 18.5h2.5a1.5 1.5 0 0 0 1.5-1.5v-4.5"/>',
+        'convert' => '<path d="M4 8.5h13.5M14 5l3.5 3.5L14 12M20 15.5H6.5M10 12l-3.5 3.5L10 19"/>',
+        'upload' => '<path d="M12 15.5V4M7.5 8.5 12 4l4.5 4.5M4.5 15v3a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/>',
+        'download' => '<path d="M12 4v11.5M7.5 11 12 15.5l4.5-4.5M4.5 15v3a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/>',
+        'search' => '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>',
+        'check' => '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+        'check-circle' => '<circle cx="12" cy="12" r="8.5"/><path d="m8 12.3 2.7 2.7 5.3-5.5"/>',
+        'alert' => '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5M12 16.2v.3"/>',
+        'info' => '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8v.3"/>',
+        'x' => '<path d="m6.5 6.5 11 11M17.5 6.5l-11 11"/>',
+        'menu' => '<path d="M4 7h16M4 12h16M4 17h16"/>',
+        'chevron-down' => '<path d="m6.5 9.5 5.5 5.5 5.5-5.5"/>',
+        'chevron-left' => '<path d="m14.5 6-6 6 6 6"/>',
+        'chevron-right' => '<path d="m9.5 6 6 6-6 6"/>',
+        'arrow-up' => '<path d="M12 19V5M6.5 10.5 12 5l5.5 5.5"/>',
+        'arrow-down' => '<path d="M12 5v14M6.5 13.5 12 19l5.5-5.5"/>',
+        'grip' => '<circle cx="9" cy="6.5" r="1" fill="currentColor"/><circle cx="15" cy="6.5" r="1" fill="currentColor"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/><circle cx="9" cy="17.5" r="1" fill="currentColor"/><circle cx="15" cy="17.5" r="1" fill="currentColor"/>',
+        'trash' => '<path d="M4.5 7h15M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10.5 11v5.5M13.5 11v5.5"/>',
+        'plus' => '<path d="M12 5v14M5 12h14"/>',
+        'page' => $file,
+        'clock' => '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+        'refresh' => '<path d="M19.5 12a7.5 7.5 0 0 1-13.4 4.6M4.5 12A7.5 7.5 0 0 1 17.9 7.4"/><path d="M18.5 3.5v4h-4M5.5 20.5v-4h4"/>',
+        'grid' => '<rect x="4" y="4" width="6.5" height="6.5" rx="1.2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.2"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.2"/>',
+        'text' => '<path d="M5 6V4.5h14V6M12 4.5v15M9 19.5h6"/>',
+        'square' => '<rect x="4.5" y="5.5" width="15" height="13" rx="1"/>',
+        'circle' => '<ellipse cx="12" cy="12" rx="8" ry="6.5"/>',
+        'line' => '<path d="M5 19 19 5"/>',
+        'pen' => '<path d="M4 18c3-1 4.5-9 7.5-9 2.4 0 .8 7 3.5 7 1.8 0 2.8-2.5 5-4"/>',
+        'highlight' => '<path d="m9 15 7.5-7.5-3-3L6 12l-.5 3.5z"/><path d="M4 20h16" stroke-width="3"/>',
+        'note' => '<path d="M5 5h14v10l-4 4H5z"/><path d="M15 19v-4h4M8.5 9h7M8.5 12h4"/>',
+        'cursor' => '<path d="m6 4 12 6.5-5.2 1.6L10.5 17.5z"/>',
+        // Tumpukan lembar dengan pembatas bagian: sampul, isi, lampiran dalam satu paket.
+        'home' => '<path d="M4.5 10.5 12 4.5l7.5 6V19a1 1 0 0 1-1 1h-4v-5.5h-5V20h-4a1 1 0 0 1-1-1z"/>',
+        'pack' => '<path d="M7 3.5h10.5V17H7z"/><path d="M4.5 6.5V20H15"/><path d="M10 8h5M10 11h5M10 14h3"/><path d="M17.5 6.5h2"/>',
+    ];
+    $inner = $paths[$name] ?? $paths['page'];
+@endphp
+<svg {{ $attributes->merge(['class' => 'icon', 'width' => $size, 'height' => $size]) }} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{!! $inner !!}</svg>

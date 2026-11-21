@@ -1,0 +1,18 @@
+# Pustaka Python untuk mesin konversi Konvertin (resources/engines/konvertin_engine.py).
+# Pasang dengan: python -m pip install -r resources/engines/requirements.txt
+# Python 3.11 atau lebih baru. Versi dikunci sama dengan yang dipakai saat pengujian.
+
+# Inti PDF: semua alat Organize, Optimize, Edit, Security, dan Convert dari PDF
+pymupdf==2.1
+pymupdf4llm==2.1
+pdf2docx==0.5.13
+python-pptx==1.0.2
+openpyxl==3.1.5
+pillow==12.2.0
+cryptography==50.0.2
+
+# OCR dan Scan to PDF (dijalankan lokal di server, tanpa layanan eksternal)
+numpy==2.5.4
+opencv-python-headless==5.1.0.95
+rapidocr-onnxruntime==1.2.3
+onnxruntime==1.32.0
